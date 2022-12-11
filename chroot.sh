@@ -1,5 +1,7 @@
 echo "Enter Drive Name"
 read DRIVE
+echo "Hard Drive (Enter) or NVME (p)"
+read DRIVE_TYPE
 echo "Hostname"
 read HOSTNAME
 ifconfig
