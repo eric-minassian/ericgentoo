@@ -37,10 +37,11 @@ env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 
 emerge sys-kernel/linux-firmware sys-kernel/gentoo-sources
 
-eselect kernel list
-echo "What Number"
-read KERNEL_NUMBER
-eselect kernel set ${KERNEL_NUMBER}
+# eselect kernel list
+# echo "What Number"
+# read KERNEL_NUMBER
+# eselect kernel set ${KERNEL_NUMBER}
+eselect kernel set 1
 
 emerge sys-apps/pciutils sys-kernel/gentoo-kernel-bin
 emerge --depclean
