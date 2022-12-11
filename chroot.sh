@@ -7,6 +7,9 @@ read HOSTNAME
 ifconfig
 echo "IF NAME"
 read IF_NAME
+echo "Enter Username"
+read USERNAME
+
 
 source /etc/profile
 export PS1="(chroot) ${PS1}"
@@ -69,8 +72,12 @@ rc-update add sshd default
 # emerge net-misc/chrony
 # rc-update add chronyd default
 
-emerge sys-fs/btrfs-progs sys-boot/grub
+emerge sys-fs/btrfs-progs sys-boot/grub app-admin/doas app-misc/neofetch
+
+echo "permit :wheel" > /etc/doas.conf
+
+useradd -m -G users,wheel,audio -s /bin/bash ${USERNAME}
+passwd ${USERNAME}
 
 grub-install --target=x86_64-efi --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
-exit
