@@ -35,6 +35,7 @@ eselect locale set ${LOCALE_NUMBER}
 
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 
+echo "sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE" | tee -a /etc/portage/package.license
 emerge sys-kernel/linux-firmware sys-kernel/gentoo-sources
 
 # eselect kernel list
