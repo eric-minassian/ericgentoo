@@ -36,7 +36,7 @@ mount --make-rslave /mnt/gentoo/dev
 mount --bind /run /mnt/gentoo/run
 mount --make-slave /mnt/gentoo/run
 
-cp /root/ericgentoo/make.conf /mnt/gentoo/etc/portage/make.confs
+cp /root/ericgentoo/make.conf /mnt/gentoo/etc/portage/make.conf
 cp /root/ericgentoo/chroot.sh /mnt/gentoo/
 cp /root/ericgentoo/chroot1.sh /mnt/gentoo/
 cp /root/ericgentoo/chroot2.sh /mnt/gentoo/
