@@ -24,7 +24,6 @@ cd /mnt/gentoo
 wget ${STAGE3}
 tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 
-# UPDATE MAKE.CONF
 
 mkdir --parents /mnt/gentoo/etc/portage/repos.conf
 cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
@@ -39,5 +38,8 @@ mount --make-slave /mnt/gentoo/run
 
 cp /root/ericgentoo/make.conf /mnt/gentoo/etc/portage/make.confs
 cp /root/ericgentoo/chroot.sh /mnt/gentoo/
+cp /root/ericgentoo/chroot1.sh /mnt/gentoo/
+cp /root/ericgentoo/chroot2.sh /mnt/gentoo/
+
 
 chroot /mnt/gentoo /bin/bash
