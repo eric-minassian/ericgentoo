@@ -2,10 +2,12 @@ echo "Enter Drive Name"
 read DRIVE
 echo "Hard Drive (Enter) or NVME (p)"
 read DRIVE_TYPE
-echo "Enter STAGE 3 Link"
-read STAGE3
+# echo "Enter STAGE 3 Link"
+# read STAGE3
+echo "Enter Swap Size"
+read SWAP
 
-SWAP="8G"
+STAGE3="https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20221211T170150Z/stage3-amd64-openrc-20221211T170150Z.tar.xz"
 
 sgdisk --zap-all ${DRIVE}
 sgdisk -n 1::+256M -t 1:ef00 -c 1:EFI ${DRIVE}
