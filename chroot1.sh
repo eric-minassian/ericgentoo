@@ -2,14 +2,6 @@ echo "Enter Drive Name"
 read DRIVE
 echo "Hard Drive (Enter) or NVME (p)"
 read DRIVE_TYPE
-echo "Hostname"
-read HOSTNAME
-ifconfig
-echo "IF NAME"
-read IF_NAME
-echo "Enter Username"
-read USERNAME
-
 
 source /etc/profile
 export PS1="(chroot) ${PS1}"
@@ -23,7 +15,7 @@ eselect profile set ${PROFILE_NUMBER}
 
 emerge --verbose --update --deep --newuse @world
 
-emerge app-portage/cpuid2cpuflags
+emerge -q app-portage/cpuid2cpuflags
 echo "*/* $(cpuid2cpuflags)" > /etc/portage/package.use/00cpu-flags
 
 echo "America/Los_Angeles" > /etc/timezone
@@ -39,11 +31,11 @@ eselect locale set ${LOCALE_NUMBER}
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 
 echo "sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE" | tee -a /etc/portage/package.license
-emerge sys-kernel/linux-firmware sys-kernel/gentoo-sources
+emerge -q sys-kernel/linux-firmware sys-kernel/gentoo-sources
 
 eselect kernel list
 echo "What Number"
 read KERNEL_NUMBER
 eselect kernel set ${KERNEL_NUMBER}
 
-emerge sys-apps/pciutils
+emerge -q sys-apps/pciutils

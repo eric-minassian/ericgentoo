@@ -19,7 +19,7 @@ EOF
 
 echo "hostname='${HOSTNAME}'" > /etc/conf.d/hostname
 
-emerge net-misc/dhcpcd net-misc/netifrc
+emerge -q net-misc/dhcpcd net-misc/netifrc
 rc-update add dhcpcd default
 rc-service dhcpcd start
 echo "config_${IF_NAME}='dhcp'"
@@ -30,10 +30,10 @@ rc-update add net.${IF_NAME} default
 passwd
 
 rc-update add sshd default
-emerge net-misc/chrony
+emerge -q net-misc/chrony
 rc-update add chronyd default
 
-emerge sys-fs/btrfs-progs sys-boot/grub app-admin/doas app-misc/neofetch
+emerge -q sys-fs/btrfs-progs sys-boot/grub app-admin/doas app-misc/neofetch
 
 echo "permit :wheel" > /etc/doas.conf
 
