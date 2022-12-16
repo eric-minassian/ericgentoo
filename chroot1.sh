@@ -7,13 +7,13 @@ source /etc/profile
 export PS1="(chroot) ${PS1}"
 
 mount ${DRIVE}${DRIVE_TYPE}"1" /boot
-emerge-webrsync
+emerge-webrsync -q
 eselect profile list
 echo "What Number"
 read PROFILE_NUMBER
 eselect profile set ${PROFILE_NUMBER}
 
-emerge --verbose --update --deep --newuse @world
+emerge -q --update --deep --newuse @world
 
 emerge -q app-portage/cpuid2cpuflags
 echo "*/* $(cpuid2cpuflags)" > /etc/portage/package.use/00cpu-flags
@@ -29,6 +29,9 @@ read LOCALE_NUMBER
 eselect locale set ${LOCALE_NUMBER}
 
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
+
+rm -rf /etc/portage/package.accept_keywords/
+mv /package.accept_keywords /etc/portage/
 
 echo "sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE" | tee -a /etc/portage/package.license
 emerge -q sys-kernel/linux-firmware sys-kernel/gentoo-sources

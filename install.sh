@@ -43,6 +43,7 @@ cp /root/chroot.sh /mnt/gentoo/
 cp /root/chroot1.sh /mnt/gentoo/
 cp /root/chroot2.sh /mnt/gentoo/
 cp /root/.config /mnt/gentoo/
+cp /root/package.accept_keywords /mnt/gentoo/
 
 
 chroot /mnt/gentoo /bin/bash

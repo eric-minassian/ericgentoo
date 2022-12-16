@@ -13,8 +13,8 @@ read USERNAME
 
 cat << EOF > /etc/fstab
 ${DRIVE}${DRIVE_TYPE}1	/boot	vfat	defaults,noatime	0 2
-${DRIVE}${DRIVE_TYPE}2	none	swap	sw		0 0
-${DRIVE}${DRIVE_TYPE}3	/		btrfs	noatime	0 1
+${DRIVE}${DRIVE_TYPE}2	none	swap	sw			0 0
+${DRIVE}${DRIVE_TYPE}3	/		btrfs	noatime		0 1
 EOF
 
 echo "hostname='${HOSTNAME}'" > /etc/conf.d/hostname
