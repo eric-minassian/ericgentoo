@@ -40,7 +40,7 @@ cp /root/ericgentoo/make.conf /mnt/gentoo/etc/portage/make.conf
 cp /root/ericgentoo/chroot.sh /mnt/gentoo/
 cp /root/ericgentoo/chroot1.sh /mnt/gentoo/
 cp /root/ericgentoo/chroot2.sh /mnt/gentoo/
-cp /root/ericgentoo/.config /mnt/gentoo/usr/src/linux
+cp /root/ericgentoo/.config /mnt/gentoo/
 
 
 chroot /mnt/gentoo /bin/bash
