@@ -5,6 +5,7 @@ wget https://raw.githubusercontent.com/eric-minassian/ericgentoo/main/post.sh
 wget https://raw.githubusercontent.com/eric-minassian/ericgentoo/main/chroot2.sh
 wget https://raw.githubusercontent.com/eric-minassian/ericgentoo/main/chroot1.sh
 wget https://raw.githubusercontent.com/eric-minassian/ericgentoo/main/.config
+wget https://raw.githubusercontent.com/eric-minassian/ericgentoo/main/package.accept_keywords
 
 
 chmod +x chroot.sh
