@@ -47,7 +47,6 @@ else
     cp /root/make.conf /mnt/gentoo/etc/portage/make.conf
 fi
 
-cp /root/chroot.sh /mnt/gentoo/
 cp /root/chroot1.sh /mnt/gentoo/
 cp /root/chroot2.sh /mnt/gentoo/
 cp /root/.config /mnt/gentoo/
