@@ -7,7 +7,7 @@ read DRIVE_TYPE
 echo "Enter Swap Size"
 read SWAP
 echo "PC (ENTER) or VM (v)"
-echo DEVICE
+read DEVICE
 
 STAGE3="https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20221211T170150Z/stage3-amd64-openrc-20221211T170150Z.tar.xz"
 
