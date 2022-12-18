@@ -6,6 +6,8 @@ read DRIVE_TYPE
 # read STAGE3
 echo "Enter Swap Size"
 read SWAP
+echo "PC (ENTER) or VM (v)"
+echo DEVICE
 
 STAGE3="https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20221211T170150Z/stage3-amd64-openrc-20221211T170150Z.tar.xz"
 
@@ -38,7 +40,13 @@ mount --make-rslave /mnt/gentoo/dev
 mount --bind /run /mnt/gentoo/run
 mount --make-slave /mnt/gentoo/run
 
-cp /root/make.conf /mnt/gentoo/etc/portage/make.conf
+
+if [ "$DEVICE" = "v" ]; then
+    cp /root/make_vm.conf /mnt/gentoo/etc/portage/make.conf
+else
+    cp /root/make.conf /mnt/gentoo/etc/portage/make.conf
+fi
+
 cp /root/chroot.sh /mnt/gentoo/
 cp /root/chroot1.sh /mnt/gentoo/
 cp /root/chroot2.sh /mnt/gentoo/
@@ -46,4 +54,4 @@ cp /root/.config /mnt/gentoo/
 cp /root/package.accept_keywords /mnt/gentoo/
 
 
-chroot /mnt/gentoo /bin/bash
+chroot /mnt/gentoo /bin/bash 

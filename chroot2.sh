@@ -22,12 +22,10 @@ echo "hostname='${HOSTNAME}'" > /etc/conf.d/hostname
 emerge -q net-misc/dhcpcd net-misc/netifrc
 rc-update add dhcpcd default
 rc-service dhcpcd start
-echo "config_${IF_NAME}='dhcp'"
+echo "config_${IF_NAME}='dhcp'" > /etc/conf.d/net
 cd /etc/init.d
 ln -s net.lo net.${IF_NAME}
 rc-update add net.${IF_NAME} default
-
-passwd
 
 rc-update add sshd default
 emerge -q net-misc/chrony
@@ -37,6 +35,7 @@ emerge -q sys-fs/btrfs-progs sys-boot/grub app-admin/doas app-misc/neofetch
 
 echo "permit :wheel" > /etc/doas.conf
 
+passwd
 useradd -m -G users,wheel,audio -s /bin/bash ${USERNAME}
 passwd ${USERNAME}
 
