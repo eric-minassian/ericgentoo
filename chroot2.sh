@@ -28,8 +28,6 @@ ln -s net.lo net.${IF_NAME}
 rc-update add net.${IF_NAME} default
 
 rc-update add sshd default
-emerge -q net-misc/chrony
-rc-update add chronyd default
 
 emerge -q sys-fs/btrfs-progs sys-boot/grub app-admin/doas app-misc/neofetch
 
