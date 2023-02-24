@@ -9,7 +9,7 @@ read SWAP
 echo "PC (ENTER) or VM (v)"
 read DEVICE
 
-STAGE3="https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20221211T170150Z/stage3-amd64-openrc-20221211T170150Z.tar.xz"
+STAGE3="https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20230220T081656Z/stage3-amd64-openrc-20230220T081656Z.tar.xz"
 
 sgdisk --zap-all ${DRIVE}
 sgdisk -n 1::+256M -t 1:ef00 -c 1:EFI ${DRIVE}
