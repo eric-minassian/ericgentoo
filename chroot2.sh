@@ -6,6 +6,9 @@ echo "Hostname"
 read HOSTNAME
 echo "Enter Username"
 read USERNAME
+ifconfig
+echo "Enter Network Interface"
+read INTERFACE
 
 
 cat << EOF > /etc/fstab
@@ -19,17 +22,17 @@ echo "${HOSTNAME}" > /etc/hostname
 emerge -q net-misc/dhcpcd net-misc/netifrc
 rc-update add dhcpcd default
 rc-service dhcpcd start
-echo "config_eth0='dhcp'" > /etc/conf.d/net
+echo "config_${INTERFACE}='dhcp'" > /etc/conf.d/net
 cd /etc/init.d
-ln -s net.lo net.eth0
-rc-update add net.eth0 default
+ln -s net.lo net.${INTERFACE}
+rc-update add net.${INTERFACE} default
 
 echo 'clock="local"' > /etc/conf.d/hwclock
 echo 'clock_args=""' >> /etc/conf.d/hwclock
 
 rc-update add sshd default
 
-emerge -q sys-fs/btrfs-progs sys-boot/grub app-admin/doas app-misc/neofetch net-misc/chrony
+emerge -q sys-fs/btrfs-progs sys-boot/grub app-admin/doas app-misc/neofetch net-misc/chrony dev-vcs/git
 
 rc-update add chronyd default
 

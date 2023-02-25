@@ -40,5 +40,3 @@ eselect kernel list
 echo "What Number"
 read KERNEL_NUMBER
 eselect kernel set ${KERNEL_NUMBER}
-
-# emerge -q sys-apps/pciutils app-arch/lz4 lzop
