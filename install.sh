@@ -11,11 +11,13 @@ read DEVICE
 
 STAGE3="https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20230220T081656Z/stage3-amd64-openrc-20230220T081656Z.tar.xz"
 
+# Partition Drive
 sgdisk --zap-all ${DRIVE}
 sgdisk -n 1::+256M -t 1:ef00 -c 1:EFI ${DRIVE}
 sgdisk -n 2::+${SWAP} -t 2:8200 -c 2:SWAP ${DRIVE}
 sgdisk -n 3 -t 3:8300 -c 3:ROOT ${DRIVE}
 
+# Format Drive
 mkfs.btrfs -f ${DRIVE}${DRIVE_TYPE}"3"
 mkfs.vfat -F 32 ${DRIVE}${DRIVE_TYPE}"1"
 mkswap ${DRIVE}${DRIVE_TYPE}"2"

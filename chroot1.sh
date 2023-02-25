@@ -34,11 +34,11 @@ rm -rf /etc/portage/package.accept_keywords/
 mv /package.accept_keywords /etc/portage/
 
 echo "sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE" | tee -a /etc/portage/package.license
-emerge -q sys-kernel/linux-firmware sys-kernel/gentoo-sources
+emerge -q sys-kernel/linux-firmware sys-kernel/installkernel-gentoo sys-kernel/gentoo-kernel sys-kernel/gentoo-sources
 
 eselect kernel list
 echo "What Number"
 read KERNEL_NUMBER
 eselect kernel set ${KERNEL_NUMBER}
 
-emerge -q sys-apps/pciutils app-arch/lz4 lzop
+# emerge -q sys-apps/pciutils app-arch/lz4 lzop

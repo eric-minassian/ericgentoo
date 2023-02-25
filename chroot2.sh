@@ -4,9 +4,6 @@ echo "Hard Drive (Enter) or NVME (p)"
 read DRIVE_TYPE
 echo "Hostname"
 read HOSTNAME
-ifconfig
-echo "IF NAME"
-read IF_NAME
 echo "Enter Username"
 read USERNAME
 
@@ -17,19 +14,24 @@ ${DRIVE}${DRIVE_TYPE}2	none	swap	sw			0 0
 ${DRIVE}${DRIVE_TYPE}3	/		btrfs	noatime		0 1
 EOF
 
-echo "hostname='${HOSTNAME}'" > /etc/conf.d/hostname
+echo "${HOSTNAME}" > /etc/hostname
 
 emerge -q net-misc/dhcpcd net-misc/netifrc
 rc-update add dhcpcd default
 rc-service dhcpcd start
-echo "config_${IF_NAME}='dhcp'" > /etc/conf.d/net
+echo "config_eth0='dhcp'" > /etc/conf.d/net
 cd /etc/init.d
-ln -s net.lo net.${IF_NAME}
-rc-update add net.${IF_NAME} default
+ln -s net.lo net.eth0
+rc-update add net.eth0 default
+
+echo 'clock="local"' > /etc/conf.d/hwclock
+echo 'clock_args=""' >> /etc/conf.d/hwclock
 
 rc-update add sshd default
 
-emerge -q sys-fs/btrfs-progs sys-boot/grub app-admin/doas app-misc/neofetch
+emerge -q sys-fs/btrfs-progs sys-boot/grub app-admin/doas app-misc/neofetch net-misc/chrony
+
+rc-update add chronyd default
 
 echo "permit :wheel" > /etc/doas.conf
 
@@ -39,3 +41,5 @@ passwd ${USERNAME}
 
 grub-install --target=x86_64-efi --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
+
+rm /stage3-*.tar.*
