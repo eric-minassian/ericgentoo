@@ -1,14 +1,12 @@
-echo "Enter Drive Name"
-read DRIVE
-echo "Hard Drive (Enter) or NVME (p)"
-read DRIVE_TYPE
-echo "Hostname"
-read HOSTNAME
-echo "Enter Username"
-read USERNAME
-ifconfig
-echo "Enter Network Interface"
-read INTERFACE
+#!/bin/bash
+
+DRIVE = $1
+DRIVE_TYPE = $2
+SWAP = $3
+DEVICE = $4
+HOSTNAME = $5
+USERNAME = $6
+INTERFACE = $7
 
 
 cat << EOF > /etc/fstab
@@ -46,3 +44,7 @@ grub-install --target=x86_64-efi --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 
 rm /stage3-*.tar.*
+
+exit
+
+./post.sh

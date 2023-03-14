@@ -1,7 +1,12 @@
-echo "Enter Drive Name"
-read DRIVE
-echo "Hard Drive (Enter) or NVME (p)"
-read DRIVE_TYPE
+#!/bin/bash
+
+DRIVE = $1
+DRIVE_TYPE = $2
+SWAP = $3
+DEVICE = $4
+HOSTNAME = $5
+USERNAME = $6
+INTERFACE = $7
 
 source /etc/profile
 export PS1="(chroot) ${PS1}"
@@ -40,3 +45,5 @@ eselect kernel list
 echo "What Number"
 read KERNEL_NUMBER
 eselect kernel set ${KERNEL_NUMBER}
+
+./chroot1.sh $DRIVE $DRIVE_TYPE $SWAP $DEVICE $HOSTNAME $USERNAME $INTERFACE

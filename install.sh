@@ -1,15 +1,14 @@
-echo "Enter Drive Name"
-read DRIVE
-echo "Hard Drive (Enter) or NVME (p)"
-read DRIVE_TYPE
-# echo "Enter STAGE 3 Link"
-# read STAGE3
-echo "Enter Swap Size"
-read SWAP
-echo "PC (ENTER) or VM (v)"
-read DEVICE
+#!/bin/bash
 
-STAGE3="https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20230220T081656Z/stage3-amd64-openrc-20230220T081656Z.tar.xz"
+DRIVE = $1
+DRIVE_TYPE = $2
+SWAP = $3
+DEVICE = $4
+HOSTNAME = $5
+USERNAME = $6
+INTERFACE = $7
+
+STAGE3="https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20230312T164650Z/stage3-amd64-openrc-20230312T164650Z.tar.xz"
 
 # Partition Drive
 sgdisk --zap-all ${DRIVE}
@@ -55,4 +54,6 @@ cp /root/.config /mnt/gentoo/
 cp /root/package.accept_keywords /mnt/gentoo/
 
 
-chroot /mnt/gentoo /bin/bash 
+chroot /mnt/gentoo /bin/bash
+
+./chroot1.sh $DRIVE $DRIVE_TYPE $SWAP $DEVICE $HOSTNAME $USERNAME $INTERFACE
