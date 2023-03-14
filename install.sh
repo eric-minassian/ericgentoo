@@ -54,6 +54,4 @@ cp /root/.config /mnt/gentoo/
 cp /root/package.accept_keywords /mnt/gentoo/
 
 
-chroot /mnt/gentoo /bin/bash
-
-./chroot1.sh $DRIVE $DRIVE_TYPE $SWAP $DEVICE $HOSTNAME $USERNAME $INTERFACE
+chroot /mnt/gentoo /bin/bash ./chroot1.sh $DRIVE $DRIVE_TYPE $SWAP $DEVICE $HOSTNAME $USERNAME $INTERFACE
