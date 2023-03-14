@@ -3,7 +3,7 @@
 lsblk
 echo "Enter Drive Name"
 read DRIVE
-echo "Hard Drive (Enter) or NVME (p)"
+echo "Hard Drive (h) or NVME (p)"
 read DRIVE_TYPE
 echo "Enter Swap Size"
 read SWAP
@@ -33,4 +33,10 @@ chmod +x chroot1.sh
 chmod +x chroot2.sh
 chmod +x install.sh
 chmod +x post.sh
+
+
+if [ "$DRIVE_TYPE" = "h" ]; then
+    DRIVE_TYPE=""
+fi
+
 ./install.sh $DRIVE $DRIVE_TYPE $SWAP $DEVICE $HOSTNAME $USERNAME $INTERFACE
