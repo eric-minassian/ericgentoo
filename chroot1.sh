@@ -1,12 +1,12 @@
 #!/bin/bash
 
-DRIVE = $1
-DRIVE_TYPE = $2
-SWAP = $3
-DEVICE = $4
-HOSTNAME = $5
-USERNAME = $6
-INTERFACE = $7
+DRIVE=$1
+DRIVE_TYPE=$2
+SWAP=$3
+DEVICE=$4
+HOSTNAME=$5
+USERNAME=$6
+INTERFACE=$7
 
 source /etc/profile
 export PS1="(chroot) ${PS1}"

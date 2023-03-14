@@ -1,12 +1,12 @@
 #!/bin/bash
 
-DRIVE = $1
-DRIVE_TYPE = $2
-SWAP = $3
-DEVICE = $4
-HOSTNAME = $5
-USERNAME = $6
-INTERFACE = $7
+DRIVE=$1
+DRIVE_TYPE=$2
+SWAP=$3
+DEVICE=$4
+HOSTNAME=$5
+USERNAME=$6
+INTERFACE=$7
 
 STAGE3="https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20230312T164650Z/stage3-amd64-openrc-20230312T164650Z.tar.xz"
 
